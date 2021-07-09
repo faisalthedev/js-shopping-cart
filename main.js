@@ -13,27 +13,27 @@ const caseIncrement = document.getElementById("caseIncrement");
 const caseDecrement = document.getElementById("caseDecrement");
 
 caseIncrement.addEventListener("click", () => {
-	const caseQuantity = document.getElementById("caseQuantity");
-	const caseQuantityNum = parseInt(caseQuantity.value);
-	const caseQuantityUpdate = caseQuantityNum + 1;
-	caseQuantity.value = caseQuantityUpdate;
-
-	const casePrice = document.getElementById("casePrice");
-	const casePriceUpdate = caseQuantityUpdate * 59;
-	casePrice.innerText = casePriceUpdate;
+	handleProductChange(true);
 });
-
-// caseDecrement
 caseDecrement.addEventListener("click", () => {
+	handleProductChange(false);
+});
+
+// Increment & Decrement function
+function handleProductChange(isIncrease) {
 	const caseQuantity = document.getElementById("caseQuantity");
 	const caseQuantityNum = parseInt(caseQuantity.value);
+	let caseQuantityUpdate = caseQuantityNum;
 
-	// if (caseQuantityNum > 0) {
-	const caseQuantityUpdate = caseQuantityNum - 1;
+	if (isIncrease == true) {
+		caseQuantityUpdate = caseQuantityNum + 1;
+	} else if (isIncrease == false && caseQuantityNum > 0) {
+		caseQuantityUpdate = caseQuantityNum - 1;
+	}
+
 	caseQuantity.value = caseQuantityUpdate;
 
 	const casePrice = document.getElementById("casePrice");
 	const casePriceUpdate = caseQuantityUpdate * 59;
 	casePrice.innerText = casePriceUpdate;
-	// }
-});
+}
