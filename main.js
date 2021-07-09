@@ -11,29 +11,40 @@
 // variables
 const caseIncrement = document.getElementById("caseIncrement");
 const caseDecrement = document.getElementById("caseDecrement");
+const phoneIncrement = document.getElementById("phoneIncrement");
+const phoneDecrement = document.getElementById("phoneDecrement");
 
+// Case
 caseIncrement.addEventListener("click", () => {
-	handleProductChange(true);
+	handleProductChange("case", true, 59);
 });
 caseDecrement.addEventListener("click", () => {
-	handleProductChange(false);
+	handleProductChange("case", false, 59);
 });
 
-// Increment & Decrement function
-function handleProductChange(isIncrease) {
-	const caseQuantity = document.getElementById("caseQuantity");
-	const caseQuantityNum = parseInt(caseQuantity.value);
-	let caseQuantityUpdate = caseQuantityNum;
+// Phone
+phoneIncrement.addEventListener("click", () => {
+	handleProductChange("phone", true, 1219);
+});
+phoneDecrement.addEventListener("click", () => {
+	handleProductChange("phone", false, 1219);
+});
+
+// Price update function
+function handleProductChange(product, isIncrease, price) {
+	const productQuantity = document.getElementById(product + "Quantity");
+	const productQuantityNum = parseInt(productQuantity.value);
+	let productQuantityUpdate = productQuantityNum;
 
 	if (isIncrease == true) {
-		caseQuantityUpdate = caseQuantityNum + 1;
-	} else if (isIncrease == false && caseQuantityNum > 0) {
-		caseQuantityUpdate = caseQuantityNum - 1;
+		productQuantityUpdate = productQuantityNum + 1;
+	} else if (isIncrease == false && productQuantityNum > 0) {
+		productQuantityUpdate = productQuantityNum - 1;
 	}
 
-	caseQuantity.value = caseQuantityUpdate;
+	productQuantity.value = productQuantityUpdate;
 
-	const casePrice = document.getElementById("casePrice");
-	const casePriceUpdate = caseQuantityUpdate * 59;
-	casePrice.innerText = casePriceUpdate;
+	const productPrice = document.getElementById(product + "Price");
+	const productPriceUpdate = productQuantityUpdate * price;
+	productPrice.innerText = productPriceUpdate;
 }
