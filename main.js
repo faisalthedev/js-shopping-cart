@@ -63,7 +63,7 @@ function calculateTotal() {
 	const totalPrice = phoneCount * 1219 + caseCount * 59;
 	subTotal.innerText = totalPrice;
 
-	const taxTotal = (totalPrice * 5) / 100;
+	const taxTotal = totalPrice * 0.05;
 	tax.innerText = taxTotal.toFixed(2);
 
 	const totalFinal = totalPrice + taxTotal;
